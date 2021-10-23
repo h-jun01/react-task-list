@@ -2,15 +2,7 @@ import React from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { initialData } from "consts/initialData";
 import styled from "styled-components";
-import { Column } from "components/Column";
-
-class InnerList extends React.PureComponent<any> {
-  render() {
-    const { column, taskMap, index } = this.props;
-    const tasks = column.taskIds.map((taskId: any) => taskMap[taskId]);
-    return <Column column={column} tasks={tasks} index={index} />;
-  }
-}
+import { ColumnInnerList } from "components/ColumnInnerList";
 
 const App: React.FC = () => {
   const [state, setState] = React.useState<typeof initialData>(initialData);
@@ -90,7 +82,7 @@ const App: React.FC = () => {
               const column = state.columns[columnId];
 
               return (
-                <InnerList
+                <ColumnInnerList
                   key={column.id}
                   column={column}
                   index={index}
